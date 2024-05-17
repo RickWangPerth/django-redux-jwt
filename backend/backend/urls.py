@@ -19,8 +19,11 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import include
 
-urlpatterns = []
+urlpatterns = [
+    path('users_auth/',include("users_auth.urls")),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
@@ -28,5 +31,6 @@ if settings.DEBUG:
 urlpatterns += [
     path("admin/", admin.site.urls),
     path('test/', views.send_test_data),
+    
     
 ]
